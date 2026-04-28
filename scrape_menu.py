@@ -58,5 +58,4 @@ if __name__ == "__main__":
                 print("No change.")
         except Exception as e:
             print(f"Error: {e}")
-            raise
         time.sleep(10)
