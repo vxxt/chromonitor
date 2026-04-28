@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Chrome Hearts – Local Preview</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: #fff; font-family: Arial, sans-serif; color: #000; padding: 40px; }
+    .b-nav ul { list-style: none; }
+    .b-nav-link { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; text-decoration: none; color: #000; display: block; padding: 8px 0; }
+    .b-dropdown-menu { padding: 4px 0 4px 12px; }
+    .b-dropdown-menu_item { font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; text-decoration: none; color: #333; display: block; padding: 3px 0; }
+  </style>
+</head>
+<body>
+
+<div class="b-nav open">
+  <ul>
+    <li class="b-nav-item b-dropdown">
+      <a class="b-nav-link b-dropdown-toggle" href="javascript:void(0);" role="button" aria-haspopup="true" aria-expanded="false" id="shop" tabindex="0">
+        Shop
+      </a>
+
+      <div class="b-dropdown-menu" style="display: block;">
+        <a href="/baccarat" id="baccarat" class="b-dropdown-menu_item dropdown-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" tabindex="0">Baccarat</a>
+      </div>
+
+      <div class="b-dropdown-menu" style="display: block;">
+        <a href="/scents" id="scents" class="b-dropdown-menu_item dropdown-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" tabindex="0">Scents</a>
+      </div>
+
+      <div class="b-dropdown-menu has-sub-menu" style="display: block;">
+        <a href="javascript:void(0);" id="underwear" class="b-dropdown-menu_item dropdown-link dropdown-toggle b-dropdown-toggle-submenu" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" tabindex="0">Underwear</a>
+      </div>
+      <div class="b-dropdown-sub-menu" data-dropdown-sub-menu="underwear" style="display: none;">
+        <div class="b-dropdown-menu" style="display: block;">
+          <a href="/boxers-leggings" id="BOXERS-LEGGINGS" class="b-dropdown-menu_item dropdown-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" tabindex="0">BOXERS &amp; LEGGINGS</a>
+        </div>
+        <div class="b-dropdown-menu" style="display: block;">
+          <a href="/intimates" id="INTIMATES" class="b-dropdown-menu_item dropdown-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" tabindex="0">INTIMATES</a>
+        </div>
+      </div>
+
+      <div class="b-dropdown-menu" style="display: block;">
+        <a href="/socks" id="socks" class="b-dropdown-menu_item dropdown-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" tabindex="0">Socks</a>
+      </div>
+
+    </li>
+  </ul>
+</div>
+
+<div style="margin-top: 30px;">
+  <button onclick="addItem()" style="padding: 8px 16px; font-size: 11px; letter-spacing: 1px; cursor: pointer; border: 1px solid #000; background: #fff;">➕ Add Item</button>
+</div>
+
+<script>
+  let counter = 1;
+  function addItem() {
+    const li = document.querySelector("li.b-nav-item.b-dropdown");
+    const div = document.createElement("div");
+    div.className = "b-dropdown-menu";
+    div.style.display = "block";
+    div.innerHTML = `<a href="/new-item-${counter}" id="new-item-${counter}" class="b-dropdown-menu_item dropdown-link dropdown-toggle" role="button" tabindex="0">New Item ${counter}</a>`;
+    li.appendChild(div);
+    counter++;
+  }
+</script>
+
+</body>
+</html>
