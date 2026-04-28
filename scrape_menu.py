@@ -43,7 +43,7 @@ def get_hrefs():
 
 
 if __name__ == "__main__":
-    for _ in range(30): # 30 x 10 seconds = 5 minutes
+    for _ in range(5): # 5 x 10 seconds = 50 sec
         try:
             seen = load_state()
             current = get_hrefs()
