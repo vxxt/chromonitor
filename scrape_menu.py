@@ -6,10 +6,7 @@ from playwright.sync_api import sync_playwright
 
 URL = "https://www.chromehearts.com"
 DISCORD_WEBHOOK = os.environ.get("DISCORD_WEBHOOK", "")
-CHECK_INTERVAL = 5
-
 KNOWN = {"/baccarat", "/scents", "/socks", "/boxers-leggings", "/intimates", "javascript:void(0);"}
-
 STATE_FILE = "state.json"
 
 
@@ -46,19 +43,20 @@ def get_hrefs():
 
 
 if __name__ == "__main__":
-    try:
-        seen = load_state()
-        current = get_hrefs()
-        new = current - seen
-        print(f"Webhook configured: {bool(DISCORD_WEBHOOK)}")
-        if new:
-            for href in new:
-                full = URL + href if href.startswith("/") else href
-                requests.post(DISCORD_WEBHOOK, json={"content": f"@everyone 🆕 New Chrome Hearts menu item: {full}"})
-            print(f"Change detected: {new}")
-            save_state(current)
-        else:
-            print("No change.")
-    except Exception as e:
-        print(f"Error: {e}")
-        raise
+    for _ in range(30): # 30 x 10 seconds = 5 minutes
+        try:
+            seen = load_state()
+            current = get_hrefs()
+            new = current - seen
+            if new:
+                for href in new:
+                    full = URL + href if href.startswith("/") else href
+                    requests.post(DISCORD_WEBHOOK, json={"content": f" @everyone 🆕 New Chrome Hearts menu item: {full}"})
+                print(f"Change detected: {new}")
+                save_state(current)
+            else:
+                print("No change.")
+        except Exception as e:
+            print(f"Error: {e}")
+            raise
+        time.sleep(10)
