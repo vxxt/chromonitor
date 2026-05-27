@@ -52,9 +52,9 @@ def check(context):
     if new:
         notify(new)
         print(f"Change detected: {new}")
-        save_state(current)
     else:
         print("No change.")
+    save_state(current)
 
 
 if __name__ == "__main__":
