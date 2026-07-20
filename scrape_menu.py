@@ -62,7 +62,7 @@ if __name__ == "__main__":
         browser = p.chromium.launch(headless=True)
         context = browser.new_context(user_agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36")
 
-        for _ in range(5):
+        for _ in range(17):
             try:
                 check(context)
             except Exception as e:
